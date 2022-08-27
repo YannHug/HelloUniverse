@@ -33,11 +33,11 @@ public class HelloUniverse {
         neptune.nom = "Neptune";
         neptune.diametre = 49532;
         neptune.matiere = "Gazeuse";
-        Planete neuf = new Planete();
 
+        Planete planeteX = new Planete();
 
-        System.out.println(jupiter.nom + " est une planète " + jupiter.matiere + " avec un diamètre de " + jupiter.diametre + " kilomètres.");
-        System.out.printf("%s est une planète %s avec un diamètre de %d kilomètres.", neuf.nom, neuf.matiere, neuf.diametre);
+        neptune.revolution("Neptune");
+        mars.rotation("Mars");
 
     }
 
