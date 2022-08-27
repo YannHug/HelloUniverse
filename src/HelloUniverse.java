@@ -42,7 +42,24 @@ public class HelloUniverse {
         neptune.diametre = 49532;
         neptune.matiere = "gazeuse";
 
-        System.out.println("Le nombre de planètes découvertes est actuellement de " + Planete.nbPlanetesDecouvertes);
+        VaisseauDeGuerre chasseur = new VaisseauDeGuerre();
+        chasseur.type = "CHASSEUR";
+        chasseur.blindage = 156;
+        chasseur.resistanceDuBouclier = 2;
+
+        VaisseauCivil vaisseauMonde = new VaisseauCivil();
+        vaisseauMonde.type = "VAISSEAU-MONDE";
+        vaisseauMonde.blindage = 4784;
+        vaisseauMonde.resistanceDuBouclier = 30;
+
+        chasseur.activerBouclier();
+        vaisseauMonde.activerBouclier();
+
+        chasseur.attaque(vaisseauMonde, "lasers photoniques", 3);
+
+        vaisseauMonde.desactiverBouclier();
+        System.out.printf("Le bouclier du Vaisseau Monde peut resister %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
+        System.out.printf("Le blindage du Vaisseau Monde est de %d.\n", vaisseauMonde.blindage);
 
     }
 

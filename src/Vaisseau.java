@@ -1,4 +1,14 @@
 public class Vaisseau {
-    String nom;
+    String type;
     int nbPassagers;
+    int blindage;
+    int resistanceDuBouclier;
+
+    public void activerBouclier() {
+        System.out.printf("Activation du bouclier d'un vaisseau de type %s.\n", this.type);
+    }
+
+    public void desactiverBouclier() {
+        System.out.printf("Désactivation du bouclier d'un vaisseau de type %s.\n", this.type);
+    }
 }
