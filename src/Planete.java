@@ -7,11 +7,11 @@ public class Planete {
     Atmosphere atmosphere;
     Vaisseau vaisseauAccoste;
     static String forme = "Sphérique";
-    static int nbPlanetesDecouvertes = 0;
+    static int nbPlanetesDecouvertes;
 
-    Planete() {
+    Planete(String nomPlanete) {
+        this.nom = nomPlanete;
         nbPlanetesDecouvertes++;
-        System.out.println("Le nombre de planètes découvertes est de " + nbPlanetesDecouvertes);
     }
 
     static String expansion(double milliardsDAnneesLumiere) {

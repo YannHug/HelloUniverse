@@ -1,38 +1,48 @@
 public class HelloUniverse {
 
     public static void main(String... args) {
-        Planete mercure = new Planete();
+        Planete mercure = new Planete("Mercure");
         mercure.nom = "Mercure";
         mercure.diametre = 4880;
-        mercure.matiere = "Tellurique";
-        Planete venus = new Planete();
+        mercure.matiere = "tellurique";
+
+        Planete venus = new Planete("Vénus");
         venus.nom = "Venus";
         venus.diametre = 12100;
-        venus.matiere = "Tellurique";
-        Planete terre = new Planete();
+        venus.matiere = "tellurique";
+
+        Planete terre = new Planete("Terre");
         terre.nom = "Terre";
         terre.diametre = 12756;
-        terre.matiere = "Tellurique";
-        Planete mars = new Planete();
+        terre.matiere = "tellurique";
+
+        Planete mars = new Planete("Mars");
         mars.nom = "Mars";
         mars.diametre = 6792;
-        mars.matiere = "Tellurique";
-        Planete jupiter = new Planete();
+        mars.matiere = "tellurique";
+
+        Planete jupiter = new Planete("Jupiter");
         jupiter.nom = "Jupiter";
         jupiter.diametre = 142984;
-        jupiter.matiere = "Gazeuse";
-        Planete saturne = new Planete();
+        jupiter.matiere = "gazeuse";
+
+        Planete saturne = new Planete("Saturne");
         saturne.nom = "Saturne";
         saturne.diametre = 120536;
-        saturne.matiere = "Gazeuse";
-        Planete uranus = new Planete();
+        saturne.matiere = "gazeuse";
+
+        Planete uranus = new Planete("Uranus");
         uranus.nom = "Uranus";
         uranus.diametre = 51118;
-        uranus.matiere = "Gazeuse";
-        Planete neptune = new Planete();
+        uranus.matiere = "gazeuse";
+
+
+        Planete neptune = new Planete("Neptune");
         neptune.nom = "Neptune";
         neptune.diametre = 49532;
-        neptune.matiere = "Gazeuse";
+        neptune.matiere = "gazeuse";
+
+        System.out.println("Le nombre de planètes découvertes est actuellement de " + Planete.nbPlanetesDecouvertes);
 
     }
 
