@@ -34,8 +34,6 @@ public class HelloUniverse {
         neptune.diametre = 49532;
         neptune.matiere = "Gazeuse";
 
-        Planete.expansion(10.5);
-        Planete.expansion(14.2);
     }
 
 }

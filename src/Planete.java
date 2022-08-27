@@ -7,12 +7,18 @@ public class Planete {
     Atmosphere atmosphere;
     Vaisseau vaisseauAccoste;
     static String forme = "Sphérique";
+    static int nbPlanetesDecouvertes = 0;
 
-    static void expansion(double distanceSeparation) {
-        if (distanceSeparation < 14.0) {
-            System.out.println("Oh la la mais c'est super rapide !");
-        } else if (distanceSeparation >= 14.0) {
-            System.out.println("Je rêve ou c'est plus rapide que la lumière ?");
+    Planete() {
+        nbPlanetesDecouvertes++;
+        System.out.println("Le nombre de planètes découvertes est de " + nbPlanetesDecouvertes);
+    }
+
+    static String expansion(double milliardsDAnneesLumiere) {
+        if (milliardsDAnneesLumiere < 14) {
+            return "Oh la la mais c'est super rapide !";
+        } else {
+            return "Je rêve ou c'est plus rapide que la lumière ?";
         }
     }
 
