@@ -5,8 +5,16 @@ public class Planete {
     String matiere;
     int totalVisiteurs;
     Atmosphere atmosphere;
-    static String forme = "Sphérique";
     Vaisseau vaisseauAccoste;
+    static String forme = "Sphérique";
+
+    static void expansion(double distanceSeparation) {
+        if (distanceSeparation < 14.0) {
+            System.out.println("Oh la la mais c'est super rapide !");
+        } else if (distanceSeparation >= 14.0) {
+            System.out.println("Je rêve ou c'est plus rapide que la lumière ?");
+        }
+    }
 
     int revolution(int degres) {
         System.out.println("Je suis la planète " + nom + " et je tourne autour de mon étoile de " + degres + " degrés.");

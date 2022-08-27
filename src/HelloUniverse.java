@@ -33,8 +33,9 @@ public class HelloUniverse {
         neptune.nom = "Neptune";
         neptune.diametre = 49532;
         neptune.matiere = "Gazeuse";
-        System.out.println("La forme d'une planète est : " + Planete.forme);
-        System.out.printf("La forme de %s est : %s", mars.nom, mars.forme);
+
+        Planete.expansion(10.5);
+        Planete.expansion(14.2);
     }
 
 }
