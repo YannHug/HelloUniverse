@@ -34,15 +34,14 @@ public class HelloUniverse {
         neptune.diametre = 49532;
         neptune.matiere = "Gazeuse";
 
-        Atmosphere atmosphereUranus = new Atmosphere();
-        atmosphereUranus.hydrogene = 83;
-        atmosphereUranus.helium = 15;
-        atmosphereUranus.methane = 2.5f;
-
-        uranus.atmosphere = atmosphereUranus;
-
-        System.out.printf("L'atmosphère de Uranus est composée : \n A %.1f%% d'hydrogène. \n A %.1f%% d'hélium. \n A %.1f%% de méthane. \n", uranus.atmosphere.hydrogene, uranus.atmosphere.helium, uranus.atmosphere.methane);
-
+        Vaisseau vaisseau = new Vaisseau();
+        vaisseau.nom = "Frégate";
+        vaisseau.nbPassagers = 9;
+        mars.accueillirVaisseau(vaisseau);
+        Vaisseau vaisseau2 = new Vaisseau();
+        vaisseau2.nom = "Croiseur";
+        vaisseau2.nbPassagers = 42;
+        mars.accueillirVaisseau(vaisseau2);
 
     }
 
