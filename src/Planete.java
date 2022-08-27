@@ -1,8 +1,10 @@
+
 public class Planete {
     String nom;
-    long diametre;
+    int diametre;
     String matiere;
-    int totalVisiteurs = 0;
+    int totalVisiteurs;
+    Atmosphere atmosphere = new Atmosphere();
 
     int revolution(int degres) {
         System.out.println("Je suis la planète " + nom + " et je tourne autour de mon étoile de " + degres + " degrés.");
@@ -14,19 +16,17 @@ public class Planete {
         return degres / 360;
     }
 
-    void accueillirVaisseau(int nouveauxHumains) {
-        totalVisiteurs += nouveauxHumains;
+    void accueillirVaisseau(int nbHumains) {
+        totalVisiteurs += nbHumains;
     }
 
     void accueillirVaisseau(String typeVaisseau) {
-        if (typeVaisseau == "CHASSEUR") {
+        if (typeVaisseau.equals("CHASSEUR")) {
             totalVisiteurs += 3;
-        } else if (typeVaisseau == "FREGATE") {
+        } else if (typeVaisseau.equals("FREGATE")) {
             totalVisiteurs += 12;
-        } else if (typeVaisseau == "CROISEUR") {
+        } else if (typeVaisseau.equals("CROISEUR")) {
             totalVisiteurs += 50;
-        } else {
-            System.out.println("Vaisseau Inconnu");
         }
     }
 }
