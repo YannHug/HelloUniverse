@@ -10,7 +10,9 @@ public class PlaneteTellurique extends Planete implements Habitable {
     public Vaisseau accueillirVaisseau(Vaisseau nouveauVaisseau) {
 
         if (nouveauVaisseau instanceof VaisseauDeGuerre) {
-            ((VaisseauDeGuerre) nouveauVaisseau).desactiverArmes();
+            if (!nouveauVaisseau.armesDesactivees) {
+                ((VaisseauDeGuerre) nouveauVaisseau).desactiverArmes();
+            }
         }
 
         totalVisiteurs += nouveauVaisseau.nbPassagers;

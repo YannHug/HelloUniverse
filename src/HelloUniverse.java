@@ -33,12 +33,12 @@ public class HelloUniverse {
         neptune.nom = "Neptune";
         neptune.diametre = 49532;
 
-        VaisseauDeGuerre chasseur = new VaisseauDeGuerre();
+        Vaisseau chasseur = new VaisseauDeGuerre();
         chasseur.type = "CHASSEUR";
         chasseur.blindage = 156;
         chasseur.resistanceDuBouclier = 2;
 
-        VaisseauCivil vaisseauMonde = new VaisseauCivil();
+        Vaisseau vaisseauMonde = new VaisseauCivil();
         vaisseauMonde.type = "VAISSEAU-MONDE";
         vaisseauMonde.blindage = 4784;
         vaisseauMonde.resistanceDuBouclier = 30;
@@ -46,7 +46,7 @@ public class HelloUniverse {
         chasseur.activerBouclier();
         vaisseauMonde.activerBouclier();
 
-        chasseur.attaque(vaisseauMonde, "lasers photoniques", 3);
+        ((VaisseauDeGuerre) chasseur).attaque(vaisseauMonde, "lasers photoniques", 3);
 
         vaisseauMonde.desactiverBouclier();
         System.out.printf("Le bouclier du Vaisseau Monde peut resister %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
