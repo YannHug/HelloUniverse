@@ -1,46 +1,37 @@
 public class HelloUniverse {
 
     public static void main(String... args) {
-        Planete mercure = new Planete("Mercure");
+        PlaneteTellurique mercure = new PlaneteTellurique("Mercure");
         mercure.nom = "Mercure";
         mercure.diametre = 4880;
-        mercure.matiere = "tellurique";
 
-        Planete venus = new Planete("Vénus");
+        PlaneteTellurique venus = new PlaneteTellurique("Vénus");
         venus.nom = "Venus";
         venus.diametre = 12100;
-        venus.matiere = "tellurique";
 
-        Planete terre = new Planete("Terre");
+        PlaneteTellurique terre = new PlaneteTellurique("Terre");
         terre.nom = "Terre";
         terre.diametre = 12756;
-        terre.matiere = "tellurique";
 
-        Planete mars = new Planete("Mars");
+        PlaneteTellurique mars = new PlaneteTellurique("Mars");
         mars.nom = "Mars";
         mars.diametre = 6792;
-        mars.matiere = "tellurique";
 
-        Planete jupiter = new Planete("Jupiter");
+        PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
         jupiter.nom = "Jupiter";
         jupiter.diametre = 142984;
-        jupiter.matiere = "gazeuse";
 
-        Planete saturne = new Planete("Saturne");
+        PlaneteGazeuse saturne = new PlaneteGazeuse("Saturne");
         saturne.nom = "Saturne";
         saturne.diametre = 120536;
-        saturne.matiere = "gazeuse";
 
-        Planete uranus = new Planete("Uranus");
+        PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.nom = "Uranus";
         uranus.diametre = 51118;
-        uranus.matiere = "gazeuse";
 
-
-        Planete neptune = new Planete("Neptune");
+        PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.nom = "Neptune";
         neptune.diametre = 49532;
-        neptune.matiere = "gazeuse";
 
         VaisseauDeGuerre chasseur = new VaisseauDeGuerre();
         chasseur.type = "CHASSEUR";
@@ -60,6 +51,9 @@ public class HelloUniverse {
         vaisseauMonde.desactiverBouclier();
         System.out.printf("Le bouclier du Vaisseau Monde peut resister %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
         System.out.printf("Le blindage du Vaisseau Monde est de %d.\n", vaisseauMonde.blindage);
+
+        mars.accueillirVaisseau(vaisseauMonde);
+        mars.accueillirVaisseau(chasseur);
 
     }
 
