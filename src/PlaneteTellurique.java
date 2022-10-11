@@ -1,10 +1,12 @@
 public class PlaneteTellurique extends Planete implements Habitable {
 
-    Vaisseau vaisseauAccoste;
+    Vaisseau[] vaisseauAccoste;
     int totalVisiteurs;
 
-    PlaneteTellurique(String nomPlanete) {
+    PlaneteTellurique(String nomPlanete, int tailleBaie) {
+
         super(nomPlanete);
+        this.vaisseauAccoste = new Vaisseau[tailleBaie];
     }
 
     public Vaisseau accueillirVaisseau(Vaisseau nouveauVaisseau) {
@@ -15,13 +17,23 @@ public class PlaneteTellurique extends Planete implements Habitable {
             }
         }
 
-        totalVisiteurs += nouveauVaisseau.nbPassagers;
+        for (int index = 0; index < vaisseauAccoste.length; index++) {
+            if (vaisseauAccoste[index] == null) {
+                vaisseauAccoste[index] = nouveauVaisseau;
+                break;
+            }
+        }
 
-        Vaisseau vaisseauPrecedent = vaisseauAccoste;
-
-        vaisseauAccoste = nouveauVaisseau;
-
-        return vaisseauPrecedent;
-
+        return nouveauVaisseau;
     }
+
+    public boolean restePlaceDisponible() {
+        for (Vaisseau vaisseau : vaisseauAccoste) {
+            if (vaisseau == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
