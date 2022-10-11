@@ -1,13 +1,13 @@
 import org.w3c.dom.ls.LSOutput;
 
 public class VaisseauDeGuerre extends Vaisseau {
-    VaisseauDeGuerre(String type) {
+    VaisseauDeGuerre(TypeVaisseau type) {
         this.type = type;
-        if (type.equals("CHASSEUR")) {
+        if (type == TypeVaisseau.CHASSEUR) {
             tonnageMax = 0;
-        } else if (type.equals("FREGATE")) {
+        } else if (type == TypeVaisseau.FREGATE) {
             tonnageMax = 50;
-        } else if (type.equals("CROISEUR")) {
+        } else if (type == TypeVaisseau.CROISEUR) {
             tonnageMax = 100;
         }
     }
@@ -41,7 +41,7 @@ public class VaisseauDeGuerre extends Vaisseau {
             if (cargaison > tonnageAConsider) {
                 tonnageActuel = tonnageMax;
                 return cargaison - tonnageAConsider;
-            }else {
+            } else {
                 tonnageActuel += cargaison;
                 return 0;
             }
