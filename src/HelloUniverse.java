@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class HelloUniverse {
 
     public static void main(String... args) {
@@ -33,28 +35,55 @@ public class HelloUniverse {
         neptune.nom = "Neptune";
         neptune.diametre = 49532;
 
-        Vaisseau chasseur = new VaisseauDeGuerre();
-        chasseur.type = "CHASSEUR";
-        chasseur.blindage = 156;
-        chasseur.resistanceDuBouclier = 2;
+        VaisseauDeGuerre chasseur = new VaisseauDeGuerre("CHASSEUR");
+        chasseur.nbPassagers = 0;
+        VaisseauDeGuerre fregate = new VaisseauDeGuerre("FREGATE");
+        fregate.nbPassagers = 10;
+        VaisseauDeGuerre croiseur = new VaisseauDeGuerre("CROISEUR");
+        croiseur.nbPassagers = 20;
 
-        Vaisseau vaisseauMonde = new VaisseauCivil();
-        vaisseauMonde.type = "VAISSEAU-MONDE";
-        vaisseauMonde.blindage = 4784;
-        vaisseauMonde.resistanceDuBouclier = 30;
+        VaisseauCivil cargo = new VaisseauCivil("CARGO");
+        cargo.nbPassagers = 50;
+        VaisseauCivil vaisseauMonde = new VaisseauCivil("VAISSEAU-MONDE");
+        vaisseauMonde.nbPassagers = 100;
 
-        chasseur.activerBouclier();
-        vaisseauMonde.activerBouclier();
+        System.out.println("Choisir un type de vaisseau : ");
+        Scanner typeVaisseau = new Scanner(System.in);
+        String entreVaisseau = typeVaisseau.nextLine();
 
-        ((VaisseauDeGuerre) chasseur).attaque(vaisseauMonde, "lasers photoniques", 3);
+        Vaisseau choixVaisseau = null;
+        switch (entreVaisseau) {
+            case "CHASSEUR" -> choixVaisseau = chasseur;
+            case "FREGATE" -> choixVaisseau = fregate;
+            case "CROISEUR" -> choixVaisseau = croiseur;
+            case "CARGO" -> choixVaisseau = cargo;
+            case "VAISSEAU-MONDE" -> choixVaisseau = vaisseauMonde;
+            default -> System.out.println("Ce type de vaisseau n'existe pas");
+        }
 
-        vaisseauMonde.desactiverBouclier();
-        System.out.printf("Le bouclier du Vaisseau Monde peut resister %d minutes.\n", vaisseauMonde.resistanceDuBouclier);
-        System.out.printf("Le blindage du Vaisseau Monde est de %d.\n", vaisseauMonde.blindage);
+        System.out.println("Choisir une planète tellurique : ");
+        Scanner nomPlanete = new Scanner(System.in);
+        String entrePlanete = nomPlanete.nextLine();
 
-        mars.accueillirVaisseau(vaisseauMonde);
-        mars.accueillirVaisseau(chasseur);
+        PlaneteTellurique choixPlanete = null;
+        switch (entrePlanete) {
+            case "Mercure" -> choixPlanete = mercure;
+            case "Venus" -> choixPlanete = venus;
+            case "Terre" -> choixPlanete = terre;
+            case "Mars" -> choixPlanete = mars;
+            default -> System.out.println("Cette planète n'existe pas");
+        }
 
+        System.out.println("Choisir un tonnage de cargaison : ");
+        Scanner poidsCargaison = new Scanner(System.in);
+        int choixCargaison = poidsCargaison.nextInt();
+
+        if (choixPlanete != null && choixVaisseau != null){
+        choixPlanete.accueillirVaisseau(choixVaisseau);
+        System.out.println(choixVaisseau.type + " a rejeté " + choixVaisseau.emporterCargaison(choixCargaison) +
+                " tonnes de cargaison");
+        } else {
+            System.out.println("Le choix de planete et/ou de vaisseau n'est pas correct");
+        }
     }
-
 }
