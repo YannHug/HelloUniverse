@@ -75,7 +75,7 @@ public class HelloUniverse {
         Scanner sc = new Scanner(System.in);
         boolean recommencer = true;
         while (recommencer) {
-            System.out.println("Quel vaisseau souhaitez vous manipuler​ : " + TypeVaisseau.CHASSEUR.name() + ", " + TypeVaisseau.FREGATE.name() + ", " + TypeVaisseau.CROISEUR.name() + ", " + TypeVaisseau.CARGO.name() + " ou " + TypeVaisseau.VAISSEAUMONDE.name() + " ?");
+            System.out.println("Quel vaisseau souhaitez vous manipuler : " + TypeVaisseau.CHASSEUR.name() + ", " + TypeVaisseau.FREGATE.name() + ", " + TypeVaisseau.CROISEUR.name() + ", " + TypeVaisseau.CARGO.name() + " ou " + TypeVaisseau.VAISSEAUMONDE.name() + " ?");
             String typeVaisseauString = sc.nextLine();
             TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(typeVaisseauString);
             Vaisseau vaisseauSelectionne = switch (typeVaisseau) {
@@ -86,18 +86,24 @@ public class HelloUniverse {
                 case VAISSEAUMONDE -> vaisseauMonde;
             };
 
-            System.out.println("Sur quelle planète tellurique du systeme solaire voulez-vous vous poser : 1 à 4");
-            int planeteSelectionnee = sc.nextInt();
-            sc.nextLine();
+            System.out.println("Sur quelle planète tellurique du systeme solaire voulez-vous vous poser : ");
+            String nomPlanete = sc.nextLine();
 
-            Planete p = systemeSolaire.planetes.get(planeteSelectionnee - 1);
+            Planete planeteSelectionnee = null;
 
-            if (p instanceof PlaneteGazeuse) {
+            for (Planete p : systemeSolaire.planetes) {
+                if (p.nom.equals(nomPlanete)) {
+                    planeteSelectionnee = p;
+                    break;
+                }
+            }
+
+            if (planeteSelectionnee instanceof PlaneteGazeuse) {
                 System.out.println(" La planete selectionnée n'est pas une planete tellurique, recommencez");
                 continue;
             }
 
-            PlaneteTellurique planete = (PlaneteTellurique) p;
+            PlaneteTellurique planete = (PlaneteTellurique) planeteSelectionnee;
 
             System.out.println("Quel tonnage souhaitez-vous emporter ?");
             int tonnageSouhaite = sc.nextInt();
