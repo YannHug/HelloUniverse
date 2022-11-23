@@ -1,57 +1,54 @@
 public class PlaneteTellurique extends Planete implements Habitable {
 
-    Vaisseau[][] vaisseauAccostes;
+    Vaisseau[][] vaisseauxAccostes;
     int totalVisiteurs;
 
-    PlaneteTellurique(String nomPlanete, int tailleBaie) {
-
-        super(nomPlanete);
-        this.vaisseauAccostes = new Vaisseau[2][tailleBaie];
+    public PlaneteTellurique(String nom, int nbPlacesParCategorie) {
+        super(nom);
+        vaisseauxAccostes = new Vaisseau[2][nbPlacesParCategorie];
     }
 
-    public void accueillirVaisseaux(Vaisseau... nouveauxVaisseaux) {
+    boolean restePlaceDisponible(Vaisseau vaisseau) {
 
-        for (Vaisseau nouveauxVaisseau : nouveauxVaisseaux) {
-
-            int indexZone = switch (nouveauxVaisseau.type) {
-                case CARGO, VAISSEAUMONDE -> 1;
-                default -> 0;
-            };
-
-            if (nouveauxVaisseau instanceof VaisseauDeGuerre) {
-                if (!nouveauxVaisseau.armesDesactivees) {
-                    ((VaisseauDeGuerre) nouveauxVaisseau).desactiverArmes();
-                }
-            }
-
-            totalVisiteurs += nouveauxVaisseau.nbPassagers;
-
-            for (int index = 0; index < vaisseauAccostes[indexZone].length; index++) {
-                if (vaisseauAccostes[indexZone][index] == null) {
-                    vaisseauAccostes[indexZone][index] = nouveauxVaisseau;
-                    System.out.println(
-                            "A la baie numéro " + indexZone + "," + index +
-                                    " se trouve le vaisseau de type " + nouveauxVaisseau.type
-                    );
-                    break;
-                }
-            }
+        TypeVaisseau typeVaisseau = vaisseau.type;
+        int indexCategorie = 0;
+        switch (typeVaisseau) {
+            case CARGO:
+            case VAISSEAUMONDE:
+                indexCategorie = 1;
         }
-    }
 
-    public boolean restePlaceDisponible(Vaisseau vaisseau) {
-
-        int indexZone = switch (vaisseau.type) {
-            case CARGO, VAISSEAUMONDE -> 1;
-            default -> 0;
-        };
-
-        for (int index = 0; index < vaisseauAccostes[indexZone].length; index++) {
-            if (vaisseauAccostes[index] == null) {
+        for (int i = 0; i < vaisseauxAccostes[indexCategorie].length; i++) {
+            if (vaisseauxAccostes[indexCategorie][i] == null) {
                 return true;
             }
         }
         return false;
     }
 
+    public void accueillirVaisseaux(Vaisseau... nouveauVaisseaux) {
+
+        for (int j = 0; j < nouveauVaisseaux.length; j++) {
+            if (nouveauVaisseaux[j] instanceof VaisseauDeGuerre) {
+                ((VaisseauDeGuerre) nouveauVaisseaux[j]).desactiverArmes();
+            }
+
+            totalVisiteurs += nouveauVaisseaux[j].nbPassagers;
+
+            int indexCategorie = 0;
+            switch (nouveauVaisseaux[j].type) {
+                case CARGO:
+                case VAISSEAUMONDE:
+                    indexCategorie = 1;
+            }
+
+            for (int i = 0; i < vaisseauxAccostes[indexCategorie].length; i++) {
+                if (vaisseauxAccostes[indexCategorie][i] == null) {
+                    vaisseauxAccostes[indexCategorie][i] = nouveauVaisseaux[j];
+                    break;
+                }
+            }
+        }
+
+    }
 }
