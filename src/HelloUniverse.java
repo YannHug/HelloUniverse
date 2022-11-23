@@ -37,6 +37,8 @@ public class HelloUniverse {
 
         VaisseauDeGuerre chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
         chasseur.nbPassagers = 0;
+        VaisseauDeGuerre chasseur2 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        chasseur.nbPassagers = 0;
         VaisseauDeGuerre fregate = new VaisseauDeGuerre(TypeVaisseau.FREGATE);
         fregate.nbPassagers = 10;
         VaisseauDeGuerre croiseur = new VaisseauDeGuerre(TypeVaisseau.CROISEUR);
@@ -47,57 +49,58 @@ public class HelloUniverse {
         VaisseauCivil vaisseauMonde = new VaisseauCivil(TypeVaisseau.VAISSEAUMONDE);
         vaisseauMonde.nbPassagers = 100;
 
+        terre.accueillirVaisseaux(chasseur, chasseur2, cargo);
 
-        String recommencer;
-
-        do {
-            System.out.println("Choisir un type de vaisseau : ");
-            Scanner selectionVaisseau = new Scanner(System.in);
-            String entreVaisseau = selectionVaisseau.nextLine();
-            TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(entreVaisseau);
-            Vaisseau choixVaisseau = null;
-            switch (typeVaisseau) {
-                case CHASSEUR -> choixVaisseau = chasseur;
-                case FREGATE -> choixVaisseau = fregate;
-                case CROISEUR -> choixVaisseau = croiseur;
-                case CARGO -> choixVaisseau = cargo;
-                case VAISSEAUMONDE -> choixVaisseau = vaisseauMonde;
-                default -> System.out.println("Ce type de vaisseau n'existe pas");
-            }
-
-            System.out.println("Choisir une planète tellurique : ");
-            Scanner nomPlanete = new Scanner(System.in);
-            String entrePlanete = nomPlanete.nextLine();
-
-            PlaneteTellurique choixPlanete = null;
-            switch (entrePlanete) {
-                case "Mercure" -> choixPlanete = mercure;
-                case "Venus" -> choixPlanete = venus;
-                case "Terre" -> choixPlanete = terre;
-                case "Mars" -> choixPlanete = mars;
-                default -> System.out.println("Cette planète n'existe pas");
-            }
-
-            System.out.println("Choisir un tonnage de cargaison : ");
-            Scanner poidsCargaison = new Scanner(System.in);
-            int choixCargaison = poidsCargaison.nextInt();
-
-            if (!choixPlanete.restePlaceDisponible()) {
-                System.out.println("Le vaisseau ne peut pas se poser sur la planete par manque de place dans la baie.");
-            } else {
-                if (choixPlanete != null && choixVaisseau != null) {
-                    choixPlanete.accueillirVaisseau(choixVaisseau);
-                    System.out.println(choixVaisseau.type + " a rejeté " + choixVaisseau.emporterCargaison(choixCargaison) +
-                            " tonnes de cargaison");
-                } else {
-                    System.out.println("Le choix de planete et/ou de vaisseau n'est pas correct");
-                }
-            }
-
-            System.out.println("Vouler vous recommencer ?");
-            recommencer = selectionVaisseau.nextLine();
-
-        } while (recommencer.equalsIgnoreCase("Oui"));
+//        String recommencer;
+//
+//        do {
+//            System.out.println("Choisir un type de vaisseau : ");
+//            Scanner selectionVaisseau = new Scanner(System.in);
+//            String entreVaisseau = selectionVaisseau.nextLine();
+//            TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(entreVaisseau);
+//            Vaisseau choixVaisseau = null;
+//            switch (typeVaisseau) {
+//                case CHASSEUR -> choixVaisseau = chasseur;
+//                case FREGATE -> choixVaisseau = fregate;
+//                case CROISEUR -> choixVaisseau = croiseur;
+//                case CARGO -> choixVaisseau = cargo;
+//                case VAISSEAUMONDE -> choixVaisseau = vaisseauMonde;
+//                default -> System.out.println("Ce type de vaisseau n'existe pas");
+//            }
+//
+//            System.out.println("Choisir une planète tellurique : ");
+//            Scanner nomPlanete = new Scanner(System.in);
+//            String entrePlanete = nomPlanete.nextLine();
+//
+//            PlaneteTellurique choixPlanete = null;
+//            switch (entrePlanete) {
+//                case "Mercure" -> choixPlanete = mercure;
+//                case "Venus" -> choixPlanete = venus;
+//                case "Terre" -> choixPlanete = terre;
+//                case "Mars" -> choixPlanete = mars;
+//                default -> System.out.println("Cette planète n'existe pas");
+//            }
+//
+//            System.out.println("Choisir un tonnage de cargaison : ");
+//            Scanner poidsCargaison = new Scanner(System.in);
+//            int choixCargaison = poidsCargaison.nextInt();
+//
+//            if (!choixPlanete.restePlaceDisponible()) {
+//                System.out.println("Le vaisseau ne peut pas se poser sur la planete par manque de place dans la baie.");
+//            } else {
+//                if (choixPlanete != null && choixVaisseau != null) {
+//                    choixPlanete.accueillirVaisseaux(choixVaisseau);
+//                    System.out.println(choixVaisseau.type + " a rejeté " + choixVaisseau.emporterCargaison(choixCargaison) +
+//                            " tonnes de cargaison");
+//                } else {
+//                    System.out.println("Le choix de planete et/ou de vaisseau n'est pas correct");
+//                }
+//            }
+//
+//            System.out.println("Vouler vous recommencer ?");
+//            recommencer = selectionVaisseau.nextLine();
+//
+//        } while (recommencer.equalsIgnoreCase("Oui"));
 
 
 //        Atmosphere atmosphereUranus = new Atmosphere();
